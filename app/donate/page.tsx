@@ -58,6 +58,155 @@ const UPI_ID = 'csb@indianbk'
 const UPI_DEEP_LINK = `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent('Chinmaya Smiles Back')}&cu=INR`
 const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=14&color=1D3557&data=${encodeURIComponent(UPI_DEEP_LINK)}`
 
+// ── What your amount covers ────────────────────────────────────────────────
+function getImpactLabel(amount: number): string {
+  if (!amount || amount <= 0) return 'Enter an amount to see your impact'
+  if (amount < 500)  return `Every rupee matters — ₹${amount.toLocaleString('en-IN')} goes directly to a scholar`
+  if (amount < 1000) return 'Covers one month of a scholar\'s stationery, transport & incidentals'
+  if (amount < 2500) return `Covers ${Math.floor(amount / 500)} months of a scholar's monthly needs`
+  if (amount < 5000) return 'Covers a scholar\'s complete textbook set for one subject area'
+  if (amount < 10000) return 'Covers all textbooks and study material for a full academic year'
+  if (amount < 25000) return 'Covers half a semester — tuition or uniform and books'
+  if (amount < 50000) return 'Funds one complete semester — tuition, uniform, and books'
+  if (amount < 100000) return `Covers ${Math.round((amount / 200000) * 100)}% of a full 2-year scholarship`
+  if (amount < 200000) return 'Funds half a complete 2-year Vidya Vritti scholarship'
+  if (amount === 200000) return '🎓 Funds one complete 2-year scholarship — transforms a life'
+  return `🎓 Funds ${(amount / 200000).toFixed(1).replace('.0', '')} complete scholarships — extraordinary impact`
+}
+
+const PRESETS = [
+  { label: '₹1,000',    value: 1000 },
+  { label: '₹2,500',    value: 2500 },
+  { label: '₹5,000',    value: 5000 },
+  { label: '₹10,000',   value: 10000 },
+  { label: '₹25,000',   value: 25000 },
+  { label: '₹1,00,000', value: 100000 },
+]
+
+function CustomDonation() {
+  const [rawInput, setRawInput] = useState('')
+  const [selected, setSelected] = useState<number | null>(null)
+
+  const numericAmount = selected ?? (rawInput ? parseInt(rawInput.replace(/\D/g, ''), 10) || 0 : 0)
+  const impactLabel   = getImpactLabel(numericAmount)
+  const upiHref       = numericAmount > 0
+    ? `upi://pay?pa=${UPI_ID}&pn=Chinmaya%20Smiles%20Back&am=${numericAmount}&cu=INR`
+    : '#'
+  const qrUrl = numericAmount > 0
+    ? `https://api.qrserver.com/v1/create-qr-code/?size=140x140&margin=10&color=1D3557&data=${encodeURIComponent(`upi://pay?pa=${UPI_ID}&pn=Chinmaya%20Smiles%20Back&am=${numericAmount}&cu=INR`)}`
+    : null
+
+  function handlePreset(val: number) {
+    setSelected(val)
+    setRawInput(val.toLocaleString('en-IN'))
+  }
+
+  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const digits = e.target.value.replace(/\D/g, '')
+    setSelected(null)
+    setRawInput(digits)
+  }
+
+  const displayAmount = numericAmount > 0
+    ? `₹${numericAmount.toLocaleString('en-IN')}`
+    : 'an amount'
+
+  return (
+    <div className="max-w-2xl mx-auto bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+      {/* Header */}
+      <div className="bg-navy-900 px-8 py-5">
+        <h3 className="font-bold text-white text-lg">Choose your own amount</h3>
+        <p className="text-white/55 text-sm mt-0.5">Any amount, any time — every rupee reaches a scholar</p>
+      </div>
+
+      <div className="p-8 space-y-6">
+        {/* Quick-pick presets */}
+        <div>
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Quick pick</p>
+          <div className="flex flex-wrap gap-2">
+            {PRESETS.map((p) => (
+              <button
+                key={p.value}
+                type="button"
+                onClick={() => handlePreset(p.value)}
+                className={`px-4 py-2 rounded-xl text-sm font-semibold border-2 transition-all ${
+                  selected === p.value
+                    ? 'bg-navy-900 border-navy-900 text-white shadow-md scale-105'
+                    : 'bg-white border-slate-200 text-slate-600 hover:border-teal-400 hover:text-teal-700'
+                }`}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Custom input */}
+        <div>
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Or type your amount</p>
+          <div className="relative">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl font-bold text-slate-400 select-none">₹</span>
+            <input
+              type="tel"
+              inputMode="numeric"
+              placeholder="0"
+              value={rawInput}
+              onChange={handleInput}
+              onFocus={() => setSelected(null)}
+              className="w-full pl-10 pr-4 py-4 text-2xl font-bold text-navy-900 border-2 border-slate-200 rounded-2xl focus:outline-none focus:border-teal-500 transition-colors placeholder:text-slate-300"
+            />
+          </div>
+        </div>
+
+        {/* Impact label */}
+        <div className={`rounded-2xl px-5 py-3.5 text-sm font-medium transition-colors ${
+          numericAmount >= 200000
+            ? 'bg-gold-50 border border-gold-200 text-gold-800'
+            : numericAmount > 0
+            ? 'bg-teal-50 border border-teal-100 text-teal-800'
+            : 'bg-slate-50 border border-slate-100 text-slate-400'
+        }`}>
+          {impactLabel}
+        </div>
+
+        {/* CTA row */}
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          {/* UPI button */}
+          <a
+            href={upiHref}
+            className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl font-bold text-base transition-all ${
+              numericAmount > 0
+                ? 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-teal-200 hover:-translate-y-0.5'
+                : 'bg-slate-100 text-slate-400 cursor-not-allowed pointer-events-none'
+            }`}
+            aria-disabled={numericAmount === 0}
+          >
+            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
+              <path d="M5.5 2h13A2.5 2.5 0 0121 4.5v15a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 19.5v-15A2.5 2.5 0 015.5 2zm6.5 3L7 10h3.5v7h2V10H16L12 5z"/>
+            </svg>
+            Pay {displayAmount} via UPI
+          </a>
+
+          {/* Dynamic QR — shows once amount is entered */}
+          {qrUrl && numericAmount > 0 && (
+            <div className="flex flex-col items-center gap-1.5 flex-shrink-0">
+              <div className="bg-white border border-slate-200 rounded-xl p-2 shadow-sm">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={qrUrl} alt={`QR code to pay ${displayAmount}`} width={80} height={80} className="rounded-md" />
+              </div>
+              <span className="text-xs text-slate-400">Scan to pay</span>
+            </div>
+          )}
+        </div>
+
+        <p className="text-xs text-slate-400 text-center -mt-2">
+          Tap "Pay via UPI" on mobile · Scan QR with PhonePe, GPay, BHIM or Paytm
+        </p>
+      </div>
+    </div>
+  )
+}
+
 function CopyButton({ value, label }: { value: string; label?: string }) {
   const [copied, setCopied] = useState(false)
   const handleCopy = () => {
@@ -154,6 +303,19 @@ export default function DonatePage() {
           <p className="text-center text-xs text-slate-400">
             Tap "Donate" on mobile to open your UPI app directly. On desktop, use the QR code or bank transfer below.
           </p>
+        </div>
+      </section>
+
+      {/* ── CUSTOM AMOUNT ─────────────────────────────────────────────── */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold font-display text-navy-900 mb-3">Have a different amount in mind?</h2>
+            <p className="text-slate-500 max-w-lg mx-auto">
+              Pick any amount — we accept from ₹1 upward. See exactly what your gift covers as you type.
+            </p>
+          </div>
+          <CustomDonation />
         </div>
       </section>
 
