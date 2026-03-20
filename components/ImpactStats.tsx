@@ -11,6 +11,7 @@ interface Stat {
   label: string
   sublabel?: string
   color?: string
+  noAnimate?: boolean
 }
 
 function parseStatStr(s: string) {
@@ -24,7 +25,7 @@ const stats: Stat[] = [
   { numericValue: sc.numeric, suffix: sc.suffix, label: 'Scholars Transformed', sublabel: 'Lives changed since 2009',       color: 'text-gold-400'  },
   { numericValue: yr.numeric, suffix: yr.suffix, label: 'Years of Service',      sublabel: 'Never missed a single year',     color: 'text-teal-300'  },
   { numericValue: cm.numeric, suffix: cm.suffix, label: 'Community Members',     sublabel: 'Contributing from across India', color: 'text-gold-400'  },
-  { numericValue: 80,  suffix: 'G',              label: 'Tax Accredited',        sublabel: '50% deduction on all donations', color: 'text-teal-300'  },
+  { numericValue: 80,  suffix: 'G',              label: 'Tax Accredited',        sublabel: '50% deduction on all donations', color: 'text-teal-300', noAnimate: true  },
 ]
 
 function useCounter(target: number, duration: number, active: boolean) {
@@ -50,7 +51,7 @@ function useCounter(target: number, duration: number, active: boolean) {
 function StatItem({ stat, index, dark }: { stat: Stat; index: number; dark: boolean }) {
   const [visible, setVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
-  const count = useCounter(stat.numericValue, 1400, visible)
+  const count = useCounter(stat.noAnimate ? 0 : stat.numericValue, 1400, visible)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -71,7 +72,7 @@ function StatItem({ stat, index, dark }: { stat: Stat; index: number; dark: bool
       style={{ transitionDelay: `${index * 120}ms` }}
     >
       <div className={clsx('text-5xl lg:text-6xl font-bold font-display mb-2 tabular-nums', stat.color)}>
-        {stat.prefix}{count}{stat.suffix}
+        {stat.prefix}{stat.noAnimate ? stat.numericValue : count}{stat.suffix}
       </div>
       <div className={clsx('font-semibold text-lg', dark ? 'text-white' : 'text-navy-700')}>{stat.label}</div>
       {stat.sublabel && (
