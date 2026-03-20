@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, type ReactNode } from 'react'
 import {
   Save, RefreshCw, Check, AlertCircle, Plus, Trash2,
   Eye, EyeOff, Lock, Unlock, ExternalLink, ChevronDown, ChevronUp,
@@ -81,7 +81,7 @@ function Toggle({ label, value, onChange, hint }: { label: string; value: boolea
   )
 }
 
-function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+function Card({ children, className = '' }: { children: ReactNode; className?: string }) {
   return <div className={`bg-white rounded-2xl border border-slate-100 shadow-sm p-6 ${className}`}>{children}</div>
 }
 
