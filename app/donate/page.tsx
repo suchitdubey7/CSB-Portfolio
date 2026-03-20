@@ -83,18 +83,12 @@ const PRESETS = [
   { label: '₹1,00,000', value: 100000 },
 ]
 
-function CustomDonation() {
+function CustomDonation({ onPay }: { onPay: (amount: number) => void }) {
   const [rawInput, setRawInput] = useState('')
   const [selected, setSelected] = useState<number | null>(null)
 
   const numericAmount = selected ?? (rawInput ? parseInt(rawInput.replace(/\D/g, ''), 10) || 0 : 0)
   const impactLabel   = getImpactLabel(numericAmount)
-  const upiHref       = numericAmount > 0
-    ? `upi://pay?pa=${UPI_ID}&pn=Chinmaya%20Smiles%20Back&am=${numericAmount}&cu=INR`
-    : '#'
-  const qrUrl = numericAmount > 0
-    ? `https://api.qrserver.com/v1/create-qr-code/?size=140x140&margin=10&color=1D3557&data=${encodeURIComponent(`upi://pay?pa=${UPI_ID}&pn=Chinmaya%20Smiles%20Back&am=${numericAmount}&cu=INR`)}`
-    : null
 
   function handlePreset(val: number) {
     setSelected(val)
@@ -172,36 +166,227 @@ function CustomDonation() {
         {/* CTA row */}
         <div className="flex flex-col sm:flex-row items-center gap-4">
           {/* UPI button */}
-          <a
-            href={upiHref}
+          <button
+            type="button"
+            disabled={numericAmount === 0}
+            onClick={() => numericAmount > 0 && onPay(numericAmount)}
             className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl font-bold text-base transition-all ${
               numericAmount > 0
                 ? 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-teal-200 hover:-translate-y-0.5'
-                : 'bg-slate-100 text-slate-400 cursor-not-allowed pointer-events-none'
+                : 'bg-slate-100 text-slate-400 cursor-not-allowed'
             }`}
-            aria-disabled={numericAmount === 0}
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
               <path d="M5.5 2h13A2.5 2.5 0 0121 4.5v15a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 19.5v-15A2.5 2.5 0 015.5 2zm6.5 3L7 10h3.5v7h2V10H16L12 5z"/>
             </svg>
             Pay {displayAmount} via UPI
-          </a>
+          </button>
 
-          {/* Dynamic QR — shows once amount is entered */}
-          {qrUrl && numericAmount > 0 && (
-            <div className="flex flex-col items-center gap-1.5 flex-shrink-0">
-              <div className="bg-white border border-slate-200 rounded-xl p-2 shadow-sm">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={qrUrl} alt={`QR code to pay ${displayAmount}`} width={80} height={80} className="rounded-md" />
-              </div>
-              <span className="text-xs text-slate-400">Scan to pay</span>
-            </div>
-          )}
         </div>
 
         <p className="text-xs text-slate-400 text-center -mt-2">
           Tap "Pay via UPI" on mobile · Scan QR with PhonePe, GPay, BHIM or Paytm
         </p>
+      </div>
+    </div>
+  )
+}
+
+// ── Donor Details Modal ────────────────────────────────────────────────────
+function DonorModal({ amount, onClose }: { amount: number; onClose: () => void }) {
+  const [name,   setName]   = useState('')
+  const [pan,    setPan]    = useState('')
+  const [mobile, setMobile] = useState('')
+  const [email,  setEmail]  = useState('')
+  const [step,   setStep]   = useState<'form' | 'pay'>('form')
+
+  const panValid    = /^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pan.toUpperCase())
+  const mobileValid = /^\d{10}$/.test(mobile.replace(/[\s\-+]/g, '').replace(/^91/, ''))
+  const emailValid  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  const isValid     = name.trim().length >= 2 && panValid && mobileValid && emailValid
+
+  const upiLink = `upi://pay?pa=${UPI_ID}&pn=Chinmaya%20Smiles%20Back&am=${amount}&cu=INR`
+  const qrUrl   = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=12&color=1D3557&data=${encodeURIComponent(upiLink)}`
+
+  function handleProceed() {
+    const msg = [
+      '🎓 New CSB Donation Details',
+      '',
+      `Name:   ${name}`,
+      `PAN:    ${pan.toUpperCase()}`,
+      `Mobile: ${mobile}`,
+      `Email:  ${email}`,
+      `Amount: ₹${amount.toLocaleString('en-IN')}`,
+      '',
+      'Please issue 80G receipt.',
+    ].join('\n')
+    window.open(`https://wa.me/919930287551?text=${encodeURIComponent(msg)}`, '_blank')
+    setStep('pay')
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
+    >
+      <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-[92vh] overflow-y-auto">
+
+        {step === 'form' ? (
+          <>
+            {/* ── Form header ── */}
+            <div className="bg-navy-900 rounded-t-3xl px-8 py-6">
+              <p className="text-white/55 text-xs uppercase tracking-widest mb-1">Donating</p>
+              <p className="text-3xl font-bold text-gold-400">₹{amount.toLocaleString('en-IN')}</p>
+              <p className="text-white/55 text-xs mt-1.5">
+                Required for your 80G tax certificate
+              </p>
+            </div>
+
+            <div className="p-8 space-y-4">
+              {/* Full Name */}
+              <div>
+                <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1.5">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="As per PAN card"
+                  className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl text-navy-900 focus:outline-none focus:border-teal-500 transition-colors placeholder:text-slate-300"
+                />
+              </div>
+
+              {/* PAN */}
+              <div>
+                <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1.5">
+                  PAN Card Number *
+                </label>
+                <input
+                  type="text"
+                  value={pan}
+                  onChange={(e) => setPan(e.target.value.toUpperCase())}
+                  placeholder="ABCDE1234F"
+                  maxLength={10}
+                  className={`w-full px-4 py-3 border-2 rounded-xl font-mono tracking-widest text-navy-900 focus:outline-none focus:border-teal-500 transition-colors placeholder:font-sans placeholder:tracking-normal placeholder:text-slate-300 ${
+                    pan && !panValid ? 'border-red-300 bg-red-50' : 'border-slate-200'
+                  }`}
+                />
+                {pan && !panValid && (
+                  <p className="text-xs text-red-500 mt-1">Format: 5 letters · 4 digits · 1 letter — e.g. ABCDE1234F</p>
+                )}
+              </div>
+
+              {/* Mobile */}
+              <div>
+                <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1.5">
+                  Mobile / WhatsApp *
+                </label>
+                <input
+                  type="tel"
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  placeholder="10-digit mobile number"
+                  className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl text-navy-900 focus:outline-none focus:border-teal-500 transition-colors placeholder:text-slate-300"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1.5">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="For 80G receipt delivery"
+                  className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl text-navy-900 focus:outline-none focus:border-teal-500 transition-colors placeholder:text-slate-300"
+                />
+              </div>
+
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Your details are used <strong>only</strong> to issue your 80G tax certificate and send donation
+                updates — never shared with third parties.
+              </p>
+
+              <button
+                type="button"
+                disabled={!isValid}
+                onClick={handleProceed}
+                className={`w-full py-4 rounded-2xl font-bold text-base transition-all ${
+                  isValid
+                    ? 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:-translate-y-0.5'
+                    : 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                }`}
+              >
+                Confirm &amp; Proceed to Payment
+              </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-full py-2 text-sm text-slate-400 hover:text-slate-600 transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            {/* ── Payment step ── */}
+            <div className="bg-teal-600 rounded-t-3xl px-8 py-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-white font-semibold text-sm">Details sent to CSB via WhatsApp</span>
+              </div>
+              <p className="text-white/70 text-sm">
+                Now complete your{' '}
+                <strong className="text-white">₹{amount.toLocaleString('en-IN')}</strong> payment
+              </p>
+            </div>
+
+            <div className="p-8 space-y-5">
+              {/* UPI button */}
+              <a
+                href={upiLink}
+                className="flex items-center justify-center gap-2 w-full py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-2xl font-bold text-base shadow-lg transition-all hover:-translate-y-0.5"
+              >
+                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
+                  <path d="M5.5 2h13A2.5 2.5 0 0121 4.5v15a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 19.5v-15A2.5 2.5 0 015.5 2zm6.5 3L7 10h3.5v7h2V10H16L12 5z"/>
+                </svg>
+                Pay ₹{amount.toLocaleString('en-IN')} via UPI App
+              </a>
+
+              {/* QR code */}
+              <div className="flex flex-col items-center gap-2">
+                <div className="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={qrUrl} alt={`QR to pay ₹${amount.toLocaleString('en-IN')}`} width={160} height={160} className="rounded-lg" />
+                </div>
+                <p className="text-xs text-slate-400">Scan with PhonePe · GPay · BHIM · Paytm</p>
+              </div>
+
+              {/* Bank transfer note */}
+              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100">
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  Prefer bank transfer? Your details have already been sent to CSB — just use the{' '}
+                  account details in the <strong>Payment Methods</strong> section below and mention
+                  your name in the transfer remarks.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-full py-2 text-sm text-slate-400 hover:text-slate-600 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
@@ -232,8 +417,15 @@ function CopyButton({ value, label }: { value: string; label?: string }) {
 }
 
 export default function DonatePage() {
+  const [payAmount, setPayAmount] = useState<number | null>(null)
+
   return (
     <>
+      {/* Donor details modal — gates all payment buttons */}
+      {payAmount !== null && (
+        <DonorModal amount={payAmount} onClose={() => setPayAmount(null)} />
+      )}
+
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="gradient-navy-teal section-padding pt-28">
         <div className="container-custom text-center max-w-3xl mx-auto">
@@ -286,16 +478,17 @@ export default function DonatePage() {
                 </div>
                 <h3 className="font-bold text-navy-900 mb-2">{tier.label}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed flex-1">{tier.description}</p>
-                <a
-                  href={`upi://pay?pa=${UPI_ID}&pn=Chinmaya%20Smiles%20Back&am=${tier.amountRaw}&cu=INR`}
-                  className={`mt-5 block text-center py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                <button
+                  type="button"
+                  onClick={() => setPayAmount(Number(tier.amountRaw))}
+                  className={`mt-5 w-full text-center py-2.5 rounded-xl text-sm font-semibold transition-all ${
                     tier.featured
                       ? 'bg-gold-400 hover:bg-gold-500 text-navy-900'
                       : 'bg-navy-900 hover:bg-navy-800 text-white'
                   }`}
                 >
                   Donate {tier.amount}
-                </a>
+                </button>
               </div>
             ))}
           </div>
@@ -315,7 +508,7 @@ export default function DonatePage() {
               Pick any amount — we accept from ₹1 upward. See exactly what your gift covers as you type.
             </p>
           </div>
-          <CustomDonation />
+          <CustomDonation onPay={(amt) => setPayAmount(amt)} />
         </div>
       </section>
 
