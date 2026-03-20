@@ -13,29 +13,29 @@ export const metadata: Metadata = {
 const donationTiers = [
   {
     amount: '₹500',
-    label: 'Pratibha Poshan',
+    label: 'Sustaining Gift',
     tag: 'Monthly',
-    description: 'Sponsor a junior merit scholar for one month — covering stationery, transport, and exam fees.',
+    description: "Sponsor a scholar for one month — covering stationery, transport, and incidentals.",
     perks: ['Digital impact certificate', 'Scholar update newsletter', '80G tax receipt'],
     color: 'border-teal-200',
     tagColor: 'tag-teal',
     cta: 'Start Monthly Gift',
   },
   {
-    amount: '₹10,000',
-    label: 'Half-Year Support',
+    amount: '₹25,000',
+    label: 'Semester Sponsor',
     tag: 'One-Time',
-    description: 'Fund six months of a Vidya Vritti scholar\'s education — one semester closer to a degree.',
+    description: "Fund one semester of a Vidya Vritti scholar's education — tuition, uniform, and books.",
     perks: ['Personalised scholar letter', 'Photo update twice a year', '80G tax receipt', 'Name on annual report'],
     color: 'border-navy-200',
     tagColor: 'tag-navy',
-    cta: 'Give ₹10,000',
+    cta: 'Give ₹25,000',
   },
   {
-    amount: '₹30,000',
+    amount: '₹2,00,000',
     label: 'Full Scholarship',
     tag: 'Complete 2-Year',
-    description: 'Fund a complete Vidya Vritti scholarship — from Class XI admission to Class XII results.',
+    description: "Fund an entire Vidya Vritti scholarship — fees, uniform, books, and mentorship from Class XI through Class XII results.",
     perks: [
       'Named scholarship certificate',
       'Two scholar update letters per year',
@@ -86,8 +86,8 @@ const volunteerRoles = [
 const csrTiers = [
   {
     title: 'Impact Partner',
-    investment: '₹60,000 / year',
-    description: '2 full scholarships annually',
+    investment: '₹2,00,000 / year',
+    description: '1 full scholarship annually',
     perks: [
       'Named sponsorship of 2 scholars',
       'Quarterly impact reports',
@@ -100,8 +100,8 @@ const csrTiers = [
   },
   {
     title: 'Education Champion',
-    investment: '₹1,50,000 / year',
-    description: '5 full scholarships annually',
+    investment: '₹6,00,000 / year',
+    description: '3 full scholarships annually',
     perks: [
       'Named sponsorship of 5 scholars',
       'Monthly impact updates',

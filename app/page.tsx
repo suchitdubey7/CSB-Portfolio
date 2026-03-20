@@ -128,7 +128,7 @@ export default function HomePage() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/get-involved#donate" className="btn-primary text-base px-8 py-4">
+            <Link href="/donate" className="btn-primary text-base px-8 py-4">
               Donate Now — 80G Benefit
               <ArrowRight className="w-5 h-5" />
             </Link>
@@ -334,9 +334,9 @@ export default function HomePage() {
                 color: 'bg-gold-50 text-gold-600',
                 bar: 'bg-gold-500',
                 title: 'Donate',
-                body: '₹500/month covers a scholar\'s books. ₹30,000 funds a complete scholarship. All donations are 80G tax-deductible.',
+                body: '₹500/month covers a scholar\'s monthly needs. ₹2,00,000 funds a complete 2-year scholarship. All donations are 80G tax-deductible.',
                 cta: 'Donate Now',
-                href: '/get-involved#donate',
+                href: '/donate',
               },
               {
                 icon: Users,
@@ -394,7 +394,7 @@ export default function HomePage() {
             or their dream college.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/get-involved#donate" className="btn-primary text-base px-8 py-4">
+            <Link href="/donate" className="btn-primary text-base px-8 py-4">
               Fund a Scholar Today <ArrowRight className="w-5 h-5" />
             </Link>
             <Link href="/programs#apply" className="btn-secondary text-base px-8 py-4">

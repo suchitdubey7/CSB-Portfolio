@@ -144,7 +144,7 @@ export default function Navigation() {
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <Link
-            href="/get-involved#donate"
+            href="/donate"
             className="btn-primary text-sm py-2.5 px-5"
           >
             Donate Now
@@ -203,7 +203,7 @@ export default function Navigation() {
             ))}
             <div className="pt-3 border-t border-gray-100">
               <Link
-                href="/get-involved#donate"
+                href="/donate"
                 className="btn-primary w-full justify-center text-sm"
               >
                 Donate Now — 80G Tax Benefit
