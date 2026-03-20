@@ -30,7 +30,7 @@ export default function ImpactComparisonChart() {
     labels: ['Scholarship Cost', 'Lifetime Economic Impact'],
     datasets: [{
       label: '₹ Value',
-      data: [30000, 5000000],
+      data: [200000, 5000000],
       backgroundColor: ['rgba(2, 128, 144, 0.85)', 'rgba(240, 165, 0, 0.85)'],
       borderColor: ['#028090', '#F0A500'],
       borderWidth: 2,
@@ -103,11 +103,11 @@ export default function ImpactComparisonChart() {
       {visible && (
         <div className="flex justify-around mt-3">
           <div className="text-center">
-            <div className="text-xl font-bold font-display text-teal-500">₹30,000</div>
-            <div className="text-xs text-csb-muted">Scholarship cost</div>
+            <div className="text-xl font-bold font-display text-teal-500">₹2,00,000</div>
+            <div className="text-xs text-csb-muted">Scholarship cost (2 yrs)</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-bold font-display text-gold-500">166×</div>
+            <div className="text-xl font-bold font-display text-gold-500">25×</div>
             <div className="text-xs text-csb-muted">Return on investment</div>
           </div>
           <div className="text-center">

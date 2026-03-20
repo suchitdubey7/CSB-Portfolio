@@ -107,7 +107,7 @@ export default function ImpactOgImage() {
               { v: '36+',      l: 'Scholars',         accent: '#028090' },
               { v: '17',       l: 'Years Active',      accent: '#028090' },
               { v: '200+',     l: 'Community Members', accent: '#028090' },
-              { v: '166×',     l: 'Return on Giving',  accent: '#F0A500' },
+              { v: '25×',      l: 'Return on Giving',  accent: '#F0A500' },
               { v: 'Rs.50L+',   l: 'Lifetime Impact',   accent: '#F0A500' },
             ].map((s) => (
               <div key={s.l} style={{

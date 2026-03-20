@@ -98,7 +98,7 @@ function StatsTab({ data, onChange }: { data: Record<string, string>; onChange: 
     { key: 'currentBatch',      label: 'Current Batch',       hint: 'Vidya Vritti batch number. E.g. "18th" or "19th"' },
     { key: 'scholarshipAmount', label: 'Full Scholarship (₹)', hint: 'Total cost per scholar for 2 years. E.g. "2,00,000"', prefix: '₹' },
     { key: 'totalDisbursed',    label: 'Total Disbursed',     hint: 'Total amount given to scholars till date. E.g. "₹50L+"' },
-    { key: 'returnMultiplier',  label: 'Return Multiplier',   hint: 'Impact ROI shown on Impact page. E.g. "166×"' },
+    { key: 'returnMultiplier',  label: 'Return Multiplier',   hint: 'Impact ROI shown on Impact page. E.g. "25×"' },
     { key: 'successRate',       label: 'Success Rate',        hint: 'Shown as a trust signal. E.g. "100%"' },
   ]
 
