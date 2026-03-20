@@ -49,10 +49,10 @@ export const metadata: Metadata = {
       'Since 2009, we have funded 36+ meritorious students from Bokaro through scholarships and mentorship. Join 200+ members changing lives.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Chinmaya Smiles Back — Education scholarship for underprivileged students',
+        alt: 'Chinmaya Smiles Back — Empowering Merit. Enabling Dreams.',
       },
     ],
   },
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Chinmaya Smiles Back',
     description: 'Community-powered scholarships for meritorious students in Bokaro, Jharkhand.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
   alternates: {
     canonical: 'https://chinmayasmiles.org',
