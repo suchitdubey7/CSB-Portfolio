@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import {
   ArrowRight, BookOpen, Users, Heart, Star, Lightbulb,
   CheckCircle, GraduationCap, TrendingUp, Award, Target
@@ -8,6 +9,9 @@ import ImpactStats from '@/components/ImpactStats'
 import ProgramCard from '@/components/ProgramCard'
 import StoryCard from '@/components/StoryCard'
 import SectionLabel from '@/components/SectionLabel'
+
+// Dynamic import — chart.js is client-only
+const AllocationDonut = dynamic(() => import('@/components/charts/AllocationDonut'), { ssr: false })
 
 export const metadata: Metadata = {
   title: 'Chinmaya Smiles Back — Empowering Merit. Enabling Dreams.',
@@ -305,15 +309,10 @@ export default function HomePage() {
                 Our Story <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-            <div className="space-y-5">
-              {whyUs.map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-2xl p-5 border border-white/10">
-                  <div className="w-10 h-10 bg-gold-400/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-gold-400" />
-                  </div>
-                  <p className="text-white/85 text-sm leading-relaxed">{text}</p>
-                </div>
-              ))}
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 lg:p-8 border border-white/15">
+              <h3 className="font-bold text-white text-lg mb-1">Where every rupee goes</h3>
+              <p className="text-white/55 text-sm mb-6">96% reaches scholars directly. Admin costs are kept under 4%.</p>
+              <AllocationDonut variant="dark" />
             </div>
           </div>
         </div>
