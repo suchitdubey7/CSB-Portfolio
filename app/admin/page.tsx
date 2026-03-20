@@ -155,7 +155,7 @@ function AnnouncementTab({ data, onChange }: { data: Record<string, unknown>; on
           <p className="text-xs font-semibold text-gold-700 uppercase tracking-wider mb-1">Preview</p>
           <p className="text-sm text-gold-900">
             {String(data.text ?? '')}
-            {data.linkText && <span className="ml-2 font-semibold underline">{String(data.linkText)}</span>}
+            {!!data.linkText && <span className="ml-2 font-semibold underline">{String(data.linkText)}</span>}
           </p>
         </div>
       )}
