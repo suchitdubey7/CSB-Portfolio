@@ -150,7 +150,7 @@ function AnnouncementTab({ data, onChange }: { data: Record<string, unknown>; on
           </div>
         </div>
       </Card>
-      {data.active && (
+      {!!data.active && (
         <div className="bg-gold-50 border border-gold-200 rounded-2xl p-4">
           <p className="text-xs font-semibold text-gold-700 uppercase tracking-wider mb-1">Preview</p>
           <p className="text-sm text-gold-900">
