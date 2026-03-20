@@ -193,12 +193,10 @@ export default function HomePage() {
                 </div>
                 <p className="text-xs text-csb-muted mt-6">Sources: Govt. of India, ASER Report, NCERT Data</p>
               </div>
-              {/* Floating card */}
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-card p-5 max-w-[200px]">
-                <div className="text-3xl font-bold text-navy-700 font-display">₹30K</div>
-                <div className="text-sm text-csb-gray mt-1">
-                  funds one complete two-year scholarship
-                </div>
+              {/* Inline highlight card — below the chart, no overlap */}
+              <div className="mt-5 bg-teal-50 border border-teal-100 rounded-2xl p-4 flex items-center gap-4">
+                <div className="text-2xl font-bold text-navy-700 font-display flex-shrink-0">₹{siteData.stats.scholarshipAmount}</div>
+                <div className="text-sm text-csb-gray leading-snug">funds one complete two-year scholarship — fees, uniform, books & mentorship</div>
               </div>
             </div>
 

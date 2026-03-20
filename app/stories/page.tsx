@@ -183,7 +183,7 @@ export default function StoriesPage() {
                 <div className="card p-5 flex items-center justify-between gap-4">
                   <div>
                     <p className="font-semibold text-navy-700 text-sm">Fund the next {story.name.split(' ')[0]}.</p>
-                    <p className="text-xs text-csb-muted mt-0.5">₹30,000 funds a complete 2-year scholarship.</p>
+                    <p className="text-xs text-csb-muted mt-0.5">₹2,00,000 funds one complete 2-year scholarship.</p>
                   </div>
                   <Link href="/get-involved#donate" className="btn-primary text-sm flex-shrink-0">
                     Donate <ArrowRight className="w-4 h-4" />

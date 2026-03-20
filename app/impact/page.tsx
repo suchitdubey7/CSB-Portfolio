@@ -157,7 +157,7 @@ export default function ImpactPage() {
               <div className="card p-6 lg:p-8">
                 <h3 className="font-bold text-navy-700 mb-2">Cost vs Lifetime Impact</h3>
                 <p className="text-sm text-csb-muted mb-6">
-                  Every ₹30,000 scholarship generates an estimated ₹50 lakh+ in lifetime economic output.
+                  Every ₹2,00,000 scholarship generates an estimated ₹50 lakh+ in lifetime economic output.
                 </p>
                 <ImpactComparisonChart />
               </div>
