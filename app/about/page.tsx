@@ -7,12 +7,12 @@ import SectionLabel from '@/components/SectionLabel'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Chinmaya Smiles Back was founded in 2009 by alumni of Chinmaya Vidyalaya Bokaro. Learn our story, mission, vision, and the team behind 36+ transformed lives.',
+    'Chinmaya Smiles Back was founded in 2009, rooted in Chinmaya Vidyalaya Bokaro and now a growing community. Learn our story, mission, vision, and the team behind 36+ transformed lives.',
 }
 
 const milestones = [
   { year: '2009', event: 'CSB founded; first Vidya Vritti scholarship awarded to 2 scholars',          icon: '🎓' },
-  { year: '2012', event: 'Alumni network expands beyond Bokaro — members join from across India',       icon: '🌍' },
+  { year: '2012', event: 'CSB community expands beyond Bokaro — members join from across India',        icon: '🌍' },
   { year: '2015', event: 'Pratibha Poshan launched for Class VII–X merit students',                     icon: '📚' },
   { year: '2017', event: 'Registered as Educational Charitable Trust (December 2017)',                   icon: '⚖️' },
   { year: '2020', event: 'Nitesh Kr Mahato: 98% boards, Bokaro district topper, 3rd in Jharkhand',     icon: '🏆' },
@@ -24,23 +24,23 @@ const milestones = [
 const values = [
   { icon: CheckCircle, title: 'Merit First',              body: 'Scholars are selected on ability and need — never on connections or chance. The most deserving get the scholarship.' },
   { icon: Heart,       title: 'Dignity in Support',       body: 'We give help that empowers, not help that diminishes. Every scholar is treated as a future colleague, not a charity case.' },
-  { icon: Users,       title: 'Community Accountability', body: 'Alumni are the guardians — not just donors. Every member of CSB is personally responsible for the scholarships we fund.' },
+  { icon: Users,       title: 'Community Accountability', body: 'Our members are the guardians — not just donors. Everyone who is part of CSB takes personal responsibility for the scholarships we fund.' },
   { icon: Target,      title: 'Compounding Impact',       body: "Today's scholar is tomorrow's mentor. The flywheel compounds — without additional cost — every single year." },
 ]
 
 const team = [
   { name: 'Dr. Ashok Singh',              role: 'Faculty Coordinator', org: 'Chinmaya Vidyalaya Bokaro' },
   { name: 'Mrs. Vyjayanthi Ravindranath', role: 'Faculty Coordinator', org: 'Chinmaya Vidyalaya Bokaro' },
-  { name: 'Shashank Jha',                role: 'Core Committee',      org: 'CSB Alumni' },
-  { name: 'Ishaan Anand',                role: 'Core Committee',      org: 'CSB Alumni' },
-  { name: 'Madhurima Das',               role: 'Core Committee',      org: 'CSB Alumni' },
-  { name: 'Saurav Guhakarta',            role: 'Core Committee',      org: 'CSB Alumni' },
-  { name: 'Chinmoyee Ojha',             role: 'Core Committee',      org: 'CSB Alumni' },
-  { name: 'Sanjeeo Mishra',             role: 'Core Committee',      org: 'CSB Alumni' },
-  { name: 'Hrishikesh Chawda',          role: 'Core Committee',      org: 'CSB Alumni' },
-  { name: 'Amrendra Narayan',           role: 'Core Committee',      org: 'CSB Alumni' },
-  { name: 'Manisha Chawda',             role: 'Core Committee',      org: 'CSB Alumni' },
-  { name: 'Kumar Shilpi',               role: 'Core Committee',      org: 'CSB Alumni' },
+  { name: 'Shashank Jha',                role: 'Core Committee',      org: 'CSB Member' },
+  { name: 'Ishaan Anand',                role: 'Core Committee',      org: 'CSB Member' },
+  { name: 'Madhurima Das',               role: 'Core Committee',      org: 'CSB Member' },
+  { name: 'Saurav Guhakarta',            role: 'Core Committee',      org: 'CSB Member' },
+  { name: 'Chinmoyee Ojha',             role: 'Core Committee',      org: 'CSB Member' },
+  { name: 'Sanjeeo Mishra',             role: 'Core Committee',      org: 'CSB Member' },
+  { name: 'Hrishikesh Chawda',          role: 'Core Committee',      org: 'CSB Member' },
+  { name: 'Amrendra Narayan',           role: 'Core Committee',      org: 'CSB Member' },
+  { name: 'Manisha Chawda',             role: 'Core Committee',      org: 'CSB Member' },
+  { name: 'Kumar Shilpi',               role: 'Core Committee',      org: 'CSB Member' },
 ]
 
 export default function AboutPage() {
@@ -48,8 +48,8 @@ export default function AboutPage() {
     <>
       <PageHeader
         tag="About Chinmaya Smiles Back"
-        title="Built by alumni. Powered by love."
-        subtitle="We were shaped by Chinmaya Vidyalaya Bokaro. Now it's our turn to shape others."
+        title="Started by alumni. Powered by community."
+        subtitle="Rooted in Chinmaya Vidyalaya Bokaro. Open to everyone who believes talent deserves a chance."
       >
         <div className="flex flex-wrap gap-3 justify-center">
           <Link href="/get-involved#donate" className="btn-primary">
@@ -80,14 +80,14 @@ export default function AboutPage() {
                   With encouragement from their former principal, Hema Mam, they founded
                   Chinmaya Smiles Back — a volunteer-driven initiative with one immediate goal:
                   fund two meritorious, economically humble students through Class XI and XII.
-                  No corporate backing. No government grant. Just alumni pooling resources for
-                  the next generation.
+                  No corporate backing. No government grant. Just a group of committed people
+                  pooling resources for the next generation.
                 </p>
                 <p>
                   That decision, made with zero fanfare in 2009, has never been reversed.
-                  Seventeen years later, CSB operates with the same alumni-funded, volunteer-driven
+                  Seventeen years later, CSB operates with the same community-funded, volunteer-driven
                   ethos — now formalized as a registered charitable trust with 80G and 12A
-                  certification.
+                  certification, and open to anyone who shares the belief that merit deserves a chance.
                 </p>
                 <p className="font-semibold text-navy-700">
                   In 17 years, we have never missed a scholarship cycle. Not once.
@@ -100,9 +100,9 @@ export default function AboutPage() {
                 { v: '2009',  l: 'Year Founded',          c: 'bg-teal-500 text-white' },
                 { v: '2017',  l: 'Registered Trust',       c: 'bg-navy-700 text-white' },
                 { v: '36+',   l: 'Scholars Supported',     c: 'bg-gold-500 text-navy-700' },
-                { v: '200+',  l: 'Alumni Contributors',    c: 'bg-csb-bg text-navy-700 border border-gray-100' },
+                { v: '200+',  l: 'Community Members',       c: 'bg-csb-bg text-navy-700 border border-gray-100' },
                 { v: '80G',   l: 'Tax Accredited',          c: 'bg-csb-bg text-navy-700 border border-gray-100' },
-                { v: '100%',  l: 'Alumni-Funded',           c: 'bg-teal-50 text-teal-700' },
+                { v: '100%',  l: 'People-Funded',           c: 'bg-teal-50 text-teal-700' },
               ].map((s) => (
                 <div key={s.l} className={`rounded-2xl p-6 text-center ${s.c}`}>
                   <div className="text-3xl font-bold font-display mb-1">{s.v}</div>
@@ -244,7 +244,7 @@ export default function AboutPage() {
           </div>
           <div className="text-center mt-8">
             <p className="text-csb-gray text-sm">
-              …and 200+ alumni contributing from across India and the world.
+              …and 200+ community members contributing from across India and the world.
             </p>
           </div>
         </div>

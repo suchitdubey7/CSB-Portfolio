@@ -16,7 +16,7 @@ const AllocationDonut = dynamic(() => import('@/components/charts/AllocationDonu
 export const metadata: Metadata = {
   title: 'Chinmaya Smiles Back — Empowering Merit. Enabling Dreams.',
   description:
-    'Alumni-powered scholarships for meritorious students from Bokaro. 36+ scholars, 17 years, 80G accredited. Donate today.',
+    'Community-powered scholarships for meritorious students from Bokaro. 36+ scholars, 17 years, 80G accredited. Donate today.',
 }
 
 const programs = [
@@ -121,9 +121,9 @@ export default function HomePage() {
 
           {/* Sub-headline */}
           <p className="text-lg sm:text-xl text-white/75 max-w-2xl mx-auto leading-relaxed mb-10">
-            Since 2009, Chinmaya Smiles Back — the alumni association of Chinmaya Vidyalaya
-            Bokaro — has funded meritorious students from low-income families through
-            scholarships, mentorship, and community.
+            Since 2009, Chinmaya Smiles Back — started by alumni of Chinmaya Vidyalaya Bokaro,
+            now a growing community — has funded meritorious students from low-income families
+            through scholarships, mentorship, and community.
           </p>
 
           {/* CTAs */}
@@ -142,7 +142,7 @@ export default function HomePage() {
             {[
               { v: '36+', l: 'Scholars' },
               { v: '18th', l: 'Annual Cycle' },
-              { v: '100%', l: 'Alumni-Funded' },
+              { v: '100%', l: 'People-Funded' },
             ].map((s) => (
               <div key={s.l} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center border border-white/15">
                 <div className="text-2xl font-bold text-gold-400 font-display">{s.v}</div>
@@ -301,9 +301,10 @@ export default function HomePage() {
                 <span className="text-gold-400">An ecosystem.</span>
               </h2>
               <p className="text-white/70 leading-relaxed mb-8">
-                CSB was built by alumni who remember exactly what it was like to sit in those
-                classrooms. Every element of our model — the mentorship, the sessions, the community —
-                comes from understanding the scholar's experience from the inside.
+                CSB was started by alumni who remember what it was like to sit in those classrooms —
+                and has since grown into a wider community of people who believe talent should never
+                be held back by circumstance. Every element of our model — the mentorship, the
+                sessions, the community — comes from caring about scholars deeply.
               </p>
               <Link href="/about" className="btn-outline-white">
                 Our Story <ArrowRight className="w-4 h-4" />

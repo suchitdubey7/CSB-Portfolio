@@ -79,10 +79,10 @@ const enquiryTypes = [
     cta: 'Email for Media/Research',
   },
   {
-    title: 'I am a CSB alumnus',
-    body: 'Reconnect with the family. Share your story, register as a mentor, or simply let us know where life has taken you.',
-    subject: 'Alumni Reconnect',
-    cta: 'Email as Alumni',
+    title: 'I want to join / reconnect',
+    body: 'Whether you are a former scholar, a supporter, or new to CSB — write to us. Share your story, register as a mentor, or simply say hello.',
+    subject: 'Joining the CSB Community',
+    cta: 'Connect with CSB',
   },
 ]
 
@@ -97,7 +97,7 @@ const faqs = [
   },
   {
     q: 'How are scholars selected?',
-    a: 'Scholars are selected through a rigorous process: school recommendation, academic record review, home visit, and a written plus oral interview assessing potential and financial need. Selection is conducted by a panel of CSB trustees and alumni.',
+    a: 'Scholars are selected through a rigorous process: school recommendation, academic record review, home visit, and a written plus oral interview assessing potential and financial need. Selection is conducted by a panel of CSB trustees and community members.',
   },
   {
     q: 'How do I apply for a scholarship?',

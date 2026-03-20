@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     template: '%s | Chinmaya Smiles Back',
   },
   description:
-    'Since 2009, Chinmaya Smiles Back — the alumni association of Chinmaya Vidyalaya Bokaro — has transformed 36+ lives through scholarships, mentorship, and community. 80G accredited. 100% alumni-funded.',
+    'Since 2009, Chinmaya Smiles Back — a community-run trust rooted in Chinmaya Vidyalaya Bokaro — has transformed 36+ lives through scholarships, mentorship, and community. 80G accredited. 100% community-funded.',
   keywords: [
     'Chinmaya Smiles Back', 'CSB', 'Chinmaya Vidyalaya Bokaro',
     'scholarship Bokaro', 'NGO Jharkhand', 'education NGO India',
-    'Vidya Vritti', 'Pratibha Poshan', 'alumni scholarship',
+    'Vidya Vritti', 'Pratibha Poshan', 'education scholarship India',
     'education charity Bokaro', '80G donation India',
   ],
   authors: [{ name: 'Chinmaya Smiles Back', url: 'https://chinmayasmiles.org' }],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: 'Chinmaya Smiles Back',
     title: 'Chinmaya Smiles Back — Empowering Merit. Enabling Dreams.',
     description:
-      'Since 2009, we have funded 36+ meritorious students from Bokaro through scholarships and mentorship. Join 200+ alumni changing lives.',
+      'Since 2009, we have funded 36+ meritorious students from Bokaro through scholarships and mentorship. Join 200+ members changing lives.',
     images: [
       {
         url: '/og-image.png',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Chinmaya Smiles Back',
-    description: 'Alumni-powered scholarships for meritorious students in Bokaro, Jharkhand.',
+    description: 'Community-powered scholarships for meritorious students in Bokaro, Jharkhand.',
     images: ['/og-image.png'],
   },
   alternates: {

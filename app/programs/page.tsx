@@ -96,7 +96,7 @@ export default function ProgramsPage() {
                 {[
                   { step: '01', title: 'Application Opens',      body: 'Applications invited each January–February. Open to students completing Class X from Chinmaya Vidyalaya Bokaro.', icon: Calendar },
                   { step: '02', title: 'Eligibility Review',     body: 'CSB reviews Class X marks and verifies household income. Students must meet school admission eligibility.', icon: BookMarked },
-                  { step: '03', title: 'Selection Committee',    body: 'A committee of alumni reviews applications. Two scholars are selected based on merit and financial need.', icon: Users },
+                  { step: '03', title: 'Selection Committee',    body: 'A committee of CSB members reviews applications. Two scholars are selected based on merit and financial need.', icon: Users },
                   { step: '04', title: 'Scholarship Begins',     body: 'Selected scholars join Class XI at Chinmaya Vidyalaya. Scholarship activates from day one of the academic year.', icon: GraduationCap },
                   { step: '05', title: 'Mentor Assigned',        body: 'Each scholar is paired with a dedicated CSB mentor for monthly guidance throughout the two-year period.', icon: CheckCircle },
                 ].map(({ step, title, body, icon: Icon }) => (

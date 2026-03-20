@@ -187,10 +187,10 @@ export default function ImpactPage() {
             {/* Cost table */}
             <div className="space-y-4">
               {[
-                { l: 'Cost per scholar (2 years)',        v: '₹30,000', note: 'Full tuition, uniform, books'       },
+                { l: 'Cost per scholar (2 years)',        v: '₹2,00,000', note: 'Full tuition, uniform, books'     },
                 { l: 'Monthly scholarship (Pratibha)',     v: '₹500',    note: 'Per student, per month'            },
                 { l: '80G tax deduction',                 v: '50%',     note: 'On all contributions'              },
-                { l: 'Annual operating budget (approx)',  v: '₹2–3L',   note: 'Fully alumni-funded to date'       },
+                { l: 'Annual operating budget (approx)',  v: '₹2–3L',   note: 'Fully community-funded to date'   },
               ].map(({ l, v, note }) => (
                 <div key={l} className="card p-5 flex items-center justify-between gap-4">
                   <div>

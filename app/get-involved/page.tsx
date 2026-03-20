@@ -73,11 +73,11 @@ const volunteerRoles = [
   },
   {
     icon: Heart,
-    title: 'Alumni Volunteer',
+    title: 'Community Volunteer',
     commitment: 'Flexible · Remote',
     description:
-      'Former CSB scholars are the backbone of our mentor network. If CSB changed your trajectory, come back and multiply that for the next generation.',
-    skills: ['CSB alumni status', 'Any professional field', 'Passion for giving back'],
+      'Whether you are a former CSB scholar, a supporter of our cause, or someone who simply cares about education equity — your contribution to the community is welcome.',
+    skills: ['Any background welcome', 'Any professional field', 'Passion for giving back'],
     color: 'text-gold-600',
     bg: 'bg-gold-50',
   },
@@ -350,36 +350,37 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      {/* ── ALUMNI REGISTRATION ──────────────────────────────────────── */}
-      <section className="section-padding bg-white border-t border-gray-100" aria-labelledby="alumni-heading">
+      {/* ── COMMUNITY REGISTRATION ───────────────────────────────────── */}
+      <section className="section-padding bg-white border-t border-gray-100" aria-labelledby="community-heading">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
             <div>
-              <span className="tag tag-navy mb-4">CSB Alumni</span>
-              <h2 id="alumni-heading" className="text-3xl lg:text-4xl font-bold font-display text-navy-700 mb-5 leading-tight">
-                Once a scholar,<br />always part of the family.
+              <span className="tag tag-navy mb-4">Join the CSB Community</span>
+              <h2 id="community-heading" className="text-3xl lg:text-4xl font-bold font-display text-navy-700 mb-5 leading-tight">
+                You don't need to be an alumnus<br />to make a difference.
               </h2>
               <p className="text-csb-gray leading-relaxed mb-4">
-                If you received support from CSB — as a Vidya Vritti scholar, a Pratibha Poshan recipient, or a Baatein
-                attendee — you are part of a community that spans 17 years and 36+ careers.
+                CSB started with school alumni — and has grown into a community of donors, mentors,
+                professionals, and friends who share one belief: talented students should not be held
+                back by financial circumstance.
               </p>
               <p className="text-csb-gray leading-relaxed mb-6">
-                Register to stay connected, receive updates on current scholars, and — when you're ready — become the
-                mentor whose story inspires the next generation.
+                If you are a former CSB scholar, a supporter of our cause, or simply someone who
+                cares about education equity — write to us. There is always a place for you here.
               </p>
               <a
-                href="mailto:chinmayasmiles@gmail.com?subject=Alumni Registration"
+                href="mailto:chinmayasmiles@gmail.com?subject=Join CSB Community"
                 className="btn-primary text-base px-8 py-4"
               >
-                Register as Alumni <ArrowRight className="w-5 h-5" />
+                Join the Community <ArrowRight className="w-5 h-5" />
               </a>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { num: '36+', label: 'Scholars supported since 2009' },
-                { num: '17',  label: 'Years of unbroken scholarships' },
-                { num: '100%', label: 'Alumni-funded operations' },
-                { num: '∞',  label: 'Scholar-to-mentor pipeline' },
+                { num: '36+',  label: 'Scholars supported since 2009' },
+                { num: '17',   label: 'Years of unbroken scholarships' },
+                { num: '200+', label: 'Community members across India' },
+                { num: '∞',    label: 'Scholar-to-mentor pipeline' },
               ].map(({ num, label }) => (
                 <div key={label} className="card p-6 text-center">
                   <div className="text-3xl font-bold font-display text-teal-500 mb-2">{num}</div>
