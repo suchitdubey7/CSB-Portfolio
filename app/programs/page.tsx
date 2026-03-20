@@ -10,7 +10,7 @@ import SectionLabel from '@/components/SectionLabel'
 export const metadata: Metadata = {
   title: 'Programs',
   description:
-    'CSB runs three programs: Vidya Vritti (Class XI-XII scholarship), Pratibha Poshan (Class VII-X merit scholarship), and Baatein (alumni inspiration sessions).',
+    'CSB runs three programs: Vidya Vritti (Class XI-XII scholarship), Pratibha Poshan (Class VII-X merit scholarship), and Prerna (alumni inspiration sessions).',
 }
 
 export default function ProgramsPage() {
@@ -193,7 +193,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* ── BAATEIN ───────────────────────────────────────────────────── */}
-      <section className="section-padding bg-white" id="baatein" aria-labelledby="baatein-heading">
+      <section className="section-padding bg-white" id="prerna" aria-labelledby="prerna-heading">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -203,19 +203,19 @@ export default function ProgramsPage() {
                 </div>
                 <div>
                   <span className="tag tag-navy">Inspiration Sessions</span>
-                  <h2 id="baatein-heading" className="text-2xl font-bold font-display text-navy-700 mt-1">
-                    Baatein
+                  <h2 id="prerna-heading" className="text-2xl font-bold font-display text-navy-700 mt-1">
+                    Prerna
                   </h2>
                 </div>
               </div>
               <p className="text-csb-gray leading-relaxed mb-5">
-                Baatein — meaning &ldquo;Conversations&rdquo; — brings successful Chinmaya Vidyalaya alumni
+                Prerna — meaning &ldquo;Inspiration&rdquo; — brings successful Chinmaya Vidyalaya alumni
                 from every professional field back to the school to share their journeys with
                 current students. Engineers, doctors, finance professionals, civil servants,
                 entrepreneurs — all alumni, all telling honest stories.
               </p>
               <p className="text-csb-gray leading-relaxed mb-6">
-                For many students in Bokaro, Baatein sessions are the first time they see
+                For many students in Bokaro, Prerna sessions are the first time they see
                 someone from their own background who made it. That visibility — &ldquo;someone like
                 me did this&rdquo; — is one of the most powerful forces in education.
               </p>
@@ -233,11 +233,11 @@ export default function ProgramsPage() {
                 ))}
               </div>
               <Link href="/get-involved#volunteer" className="btn-secondary">
-                Volunteer to Speak at Baatein <ArrowRight className="w-4 h-4" />
+                Volunteer to Speak at Prerna <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <div>
-              <h3 className="text-xl font-bold font-display text-navy-700 mb-6">Who speaks at Baatein?</h3>
+              <h3 className="text-xl font-bold font-display text-navy-700 mb-6">Who speaks at Prerna?</h3>
               <div className="space-y-4">
                 {[
                   { field: 'Technology & Engineering',   example: 'Software engineers, IITians, researchers at tech giants', icon: '💻' },

@@ -39,7 +39,7 @@ const donationTiers = [
     perks: [
       'Named scholarship certificate',
       'Two scholar update letters per year',
-      'Invitation to annual Baatein event',
+      'Invitation to annual Prerna event',
       '80G tax receipt',
       'Name on website & annual report',
     ],
@@ -63,7 +63,7 @@ const volunteerRoles = [
   },
   {
     icon: Users,
-    title: 'Baatein Speaker',
+    title: 'Prerna Speaker',
     commitment: '1 session/year · Bokaro (or virtual)',
     description:
       'Share your professional journey with 50+ scholars and students at our annual inspiration event. Every field is welcome — what matters is your authentic story.',
@@ -107,7 +107,7 @@ const csrTiers = [
       'Monthly impact updates',
       '80G CSR documentation',
       'Feature in annual report',
-      'Invitation to Baatein event',
+      'Invitation to Prerna event',
       'Co-branded impact story',
     ],
     color: 'bg-navy-700 border-navy-600',
@@ -400,7 +400,7 @@ export default function GetInvolvedPage() {
           </h2>
           <p className="text-white/75 mb-8">
             Write to us. Tell us your interests and capacity — we'll find the right fit, whether it's ₹500 a month or
-            a Baatein speaker slot once a year.
+            a Prerna speaker slot once a year.
           </p>
           <a href="mailto:chinmayasmiles@gmail.com" className="btn-primary text-base px-8 py-4">
             Get in Touch <ArrowRight className="w-5 h-5" />

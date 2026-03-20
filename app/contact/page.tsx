@@ -105,7 +105,7 @@ const faqs = [
   },
   {
     q: 'Can I volunteer remotely?',
-    a: 'Yes — academic mentoring and career guidance are conducted primarily over phone/video call. Baatein speaker slots can also be done virtually.',
+    a: 'Yes — academic mentoring and career guidance are conducted primarily over phone/video call. Prerna speaker slots can also be done virtually.',
   },
   {
     q: 'Is CSB audited?',

@@ -50,7 +50,7 @@ const stories = [
       'Nitesh came from a family where his parents had completed only primary school. His father ran a small tea stall near the BSL gate; his mother was a homemaker. The idea of a district topper emerging from their household was, in their own words, "something from a film."',
       'Selected by CSB in Class XI on the strength of his Class X results and a rigorous interview, Nitesh received not just financial support but structured academic mentoring. His CSB mentor — an engineer who had grown up in Bokaro — set him a study schedule, provided access to premium digital resources, and held him to account every fortnight.',
       'When Class XII board results were declared, Nitesh had scored 98% — topping not just Bokaro district but ranking 3rd in the entire state of Jharkhand. The local newspaper covered his story. His tea-stall-owner father framed the article.',
-      'He is currently pursuing a B.Tech at a top Jharkhand engineering college on a full merit scholarship, and has returned to CSB to speak at the most recent Baatein event.',
+      'He is currently pursuing a B.Tech at a top Jharkhand engineering college on a full merit scholarship, and has returned to CSB to speak at the most recent Prerna event.',
     ],
     stats: [
       { label: 'Class XII score', value: '98%' },

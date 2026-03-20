@@ -5,7 +5,7 @@ const footerLinks = {
   Programs: [
     { label: 'Vidya Vritti',    href: '/programs#vidya-vritti' },
     { label: 'Pratibha Poshan', href: '/programs#pratibha-poshan' },
-    { label: 'Baatein',         href: '/programs#baatein' },
+    { label: 'Prerna',         href: '/programs#prerna' },
     { label: 'Apply Now',       href: '/programs#apply' },
   ],
   'Get Involved': [

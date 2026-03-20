@@ -9,7 +9,7 @@ ChartJS.register(ArcElement, Tooltip, Legend)
 const slices = [
   { label: 'Vidya Vritti Scholarships', value: 70, color: '#028090' },
   { label: 'Pratibha Poshan',           value: 18, color: '#1D3557' },
-  { label: 'Baatein Events',            value: 8,  color: '#F0A500' },
+  { label: 'Prerna Events',            value: 8,  color: '#F0A500' },
   { label: 'Administration',            value: 4,  color: '#CBD5E1' },
 ]
 

@@ -15,7 +15,7 @@ const navLinks = [
     children: [
       { href: '/programs#vidya-vritti',    label: 'Vidya Vritti' },
       { href: '/programs#pratibha-poshan', label: 'Pratibha Poshan' },
-      { href: '/programs#baatein',         label: 'Baatein' },
+      { href: '/programs#prerna',         label: 'Prerna' },
     ]
   },
   { href: '/impact',       label: 'Impact' },
