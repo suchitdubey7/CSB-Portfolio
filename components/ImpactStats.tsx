@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import siteData from '@/content/site-data.json'
 import clsx from 'clsx'
 
 interface Stat {
@@ -12,11 +13,18 @@ interface Stat {
   color?: string
 }
 
+function parseStatStr(s: string) {
+  return { numeric: parseInt(s.replace(/\D/g, ''), 10) || 0, suffix: s.replace(/[\d,]/g, '').trim() }
+}
+const sc = parseStatStr(siteData.stats.scholarsSupported)
+const yr = parseStatStr(siteData.stats.yearsActive)
+const cm = parseStatStr(siteData.stats.communityMembers)
+
 const stats: Stat[] = [
-  { numericValue: 36,  suffix: '+',  label: 'Scholars Transformed', sublabel: 'Lives changed since 2009',       color: 'text-gold-400'  },
-  { numericValue: 17,               label: 'Years of Service',      sublabel: 'Never missed a single year',     color: 'text-teal-300'  },
-  { numericValue: 200, suffix: '+',  label: 'Alumni Members',        sublabel: 'Contributing from across India', color: 'text-gold-400'  },
-  { numericValue: 80,  suffix: 'G',  label: 'Tax Accredited',        sublabel: '50% deduction on all donations', color: 'text-teal-300'  },
+  { numericValue: sc.numeric, suffix: sc.suffix, label: 'Scholars Transformed', sublabel: 'Lives changed since 2009',       color: 'text-gold-400'  },
+  { numericValue: yr.numeric, suffix: yr.suffix, label: 'Years of Service',      sublabel: 'Never missed a single year',     color: 'text-teal-300'  },
+  { numericValue: cm.numeric, suffix: cm.suffix, label: 'Community Members',     sublabel: 'Contributing from across India', color: 'text-gold-400'  },
+  { numericValue: 80,  suffix: 'G',              label: 'Tax Accredited',        sublabel: '50% deduction on all donations', color: 'text-teal-300'  },
 ]
 
 function useCounter(target: number, duration: number, active: boolean) {
@@ -96,7 +104,7 @@ export default function ImpactStats({
           <div className="text-center mb-12">
             <span className="tag-gold mb-3">Our Track Record</span>
             <h2 className="text-3xl lg:text-4xl font-bold font-display text-white mt-2">
-              17 Years of Unbroken Commitment
+              {siteData.stats.yearsActive} Years of Unbroken Commitment
             </h2>
             <p className="text-white/65 mt-3 text-lg max-w-xl mx-auto">
               Numbers that represent real people, real families, real futures changed.

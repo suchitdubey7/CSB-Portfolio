@@ -4,6 +4,7 @@ import { ArrowRight, Quote, MapPin, GraduationCap, Briefcase, Heart } from 'luci
 import PageHeader from '@/components/PageHeader'
 import SectionLabel from '@/components/SectionLabel'
 import ImpactStats from '@/components/ImpactStats'
+import siteData from '@/content/site-data.json'
 
 export const metadata: Metadata = {
   title: 'Scholar Stories',
@@ -142,15 +143,21 @@ export default function StoriesPage() {
 
               {/* Right column — stats + icon panel */}
               <div className="space-y-5">
-                {/* Stats grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  {story.stats.map(({ label, value }) => (
-                    <div key={label} className="card p-5 text-center">
-                      <div className={`text-2xl font-bold font-display mb-1 ${story.color}`}>{value}</div>
-                      <p className="text-xs text-csb-muted leading-snug">{label}</p>
+                {/* Stats grid — uses keyStats from site-data.json (editable via /admin) */}
+                {(() => {
+                  const jsonStory = siteData.stories.find(s => s.id === story.id)
+                  const statsToShow = jsonStory?.keyStats ?? story.stats
+                  return (
+                    <div className="grid grid-cols-2 gap-4">
+                      {statsToShow.map(({ label, value }) => (
+                        <div key={label} className="card p-5 text-center">
+                          <div className={`text-2xl font-bold font-display mb-1 ${story.color}`}>{value}</div>
+                          <p className="text-xs text-csb-muted leading-snug">{label}</p>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  )
+                })()}
 
                 {/* Journey panel */}
                 <div className="bg-navy-700 rounded-2xl p-6 text-white">

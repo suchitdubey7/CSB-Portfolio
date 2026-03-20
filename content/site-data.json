@@ -1,0 +1,104 @@
+{
+  "stats": {
+    "scholarsSupported": "36+",
+    "yearsActive": "17",
+    "communityMembers": "200+",
+    "scholarshipAmount": "2,00,000",
+    "totalDisbursed": "₹50L+",
+    "returnMultiplier": "166×",
+    "currentBatch": "18th",
+    "successRate": "100%"
+  },
+  "announcement": {
+    "active": true,
+    "text": "Applications for the 18th Vidya Vritti scholarship are now open.",
+    "link": "/programs",
+    "linkText": "Learn More"
+  },
+  "stories": [
+    {
+      "id": "shivani",
+      "name": "Shivani Mishra",
+      "batch": "2015 Cohort",
+      "program": "Vidya Vritti",
+      "achievement": "IIT Bombay — Electrical Engineering Dual Degree",
+      "location": "Bokaro Steel City → Mumbai",
+      "quote": "I remember the day I got the call that CSB had selected me. My father is a contract worker at BSL. We had never imagined IIT was a real possibility for someone like me — until CSB showed me it was.",
+      "color": "gold",
+      "keyStats": [
+        { "label": "JEE Advanced rank", "value": "Top 2%" },
+        { "label": "Degree", "value": "IIT Bombay — EE" },
+        { "label": "Research internship", "value": "Completed" },
+        { "label": "Now mentors", "value": "2 scholars" }
+      ]
+    },
+    {
+      "id": "nitesh",
+      "name": "Nitesh Kr Mahato",
+      "batch": "2017 Cohort",
+      "program": "Vidya Vritti",
+      "achievement": "98% in Class XII · Bokaro District Topper · 3rd in Jharkhand",
+      "location": "Bokaro Steel City → Engineering College, Jharkhand",
+      "quote": "People in my mohalla thought scoring above 80% was exceptional. I didn't know that 98 was possible — or that I was capable of it. CSB didn't just give me money. They gave me belief.",
+      "color": "teal",
+      "keyStats": [
+        { "label": "Class XII score", "value": "98%" },
+        { "label": "Bokaro ranking", "value": "#1 District" },
+        { "label": "Jharkhand ranking", "value": "#3 State" },
+        { "label": "Current", "value": "B.Tech (Merit)" }
+      ]
+    },
+    {
+      "id": "akash",
+      "name": "Akash Kumar",
+      "batch": "2012 Cohort",
+      "program": "Vidya Vritti",
+      "achievement": "Fintech Professional at Intelliflo, Hyderabad",
+      "location": "Bokaro Steel City → Hyderabad",
+      "quote": "I was the first person in my family to move out of Bokaro for work. I was the first to own a laptop. CSB was the first domino — everything else followed from that.",
+      "color": "navy",
+      "keyStats": [
+        { "label": "Degree", "value": "B.Tech — Computer Science" },
+        { "label": "Years in fintech", "value": "7+" },
+        { "label": "Company", "value": "Intelliflo, Hyderabad" },
+        { "label": "Family impact", "value": "3 cousins educated" }
+      ]
+    }
+  ],
+  "programs": {
+    "vidyaVritti": {
+      "name": "Vidya Vritti",
+      "tagline": "Full Class XI–XII scholarship — fees, books, uniform, mentorship",
+      "scholarshipAmount": "2,00,000",
+      "duration": "2 years (Class XI & XII)",
+      "currentBatch": "18th",
+      "applicationsOpen": true,
+      "applicationDeadline": "",
+      "eligibilityMarks": "85%+ in Class X",
+      "eligibilityIncome": "Annual family income below ₹3 LPA"
+    },
+    "pratibhaPoshan": {
+      "name": "Pratibha Poshan",
+      "tagline": "Monthly support for Classes VII–X to nurture early talent",
+      "monthlyAmount": "500–2,000",
+      "classes": "Class VII to X",
+      "selectionMethod": "CSB-conducted merit test"
+    },
+    "baatein": {
+      "name": "Baatein",
+      "tagline": "Annual talk series where CSB alumni and scholars share their journeys",
+      "frequency": "Annual",
+      "format": "Live talks by scholars and community members"
+    }
+  },
+  "contact": {
+    "email": "chinmayasmiles@gmail.com",
+    "whatsapp": "919930287551",
+    "upiId": "csb@indianbk",
+    "bankAccount": "6647579907",
+    "bankIfsc": "IDIB000S178",
+    "bankName": "Indian Bank, Allahabad",
+    "accountName": "Chinmaya Smiles Back",
+    "address": "Bokaro Steel City, Jharkhand"
+  }
+}

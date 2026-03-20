@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowRight, Copy, Check, Shield, Heart, Star, BadgeCheck } from 'lucide-react'
+import siteData from '@/content/site-data.json'
 
 const tiers = [
   {
@@ -48,13 +49,13 @@ const tiers = [
 ]
 
 const bankDetails = [
-  { label: 'Account Name', value: 'Chinmaya Smiles Back' },
-  { label: 'Account Number', value: '6647579907' },
-  { label: 'IFSC Code', value: 'IDIB000S178' },
-  { label: 'Bank', value: 'Indian Bank, Allahabad' },
+  { label: 'Account Name',   value: siteData.contact.accountName },
+  { label: 'Account Number', value: siteData.contact.bankAccount },
+  { label: 'IFSC Code',      value: siteData.contact.bankIfsc },
+  { label: 'Bank',           value: siteData.contact.bankName },
 ]
 
-const UPI_ID = 'csb@indianbk'
+const UPI_ID = siteData.contact.upiId
 const UPI_DEEP_LINK = `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent('Chinmaya Smiles Back')}&cu=INR`
 const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=14&color=1D3557&data=${encodeURIComponent(UPI_DEEP_LINK)}`
 

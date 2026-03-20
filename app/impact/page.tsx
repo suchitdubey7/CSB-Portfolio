@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import PageHeader from '@/components/PageHeader'
 import SectionLabel from '@/components/SectionLabel'
 import ImpactStats from '@/components/ImpactStats'
+import siteData from '@/content/site-data.json'
 
 // Dynamic imports — chart.js is client-only
 const FundingAreaChart      = dynamic(() => import('@/components/charts/FundingAreaChart'),      { ssr: false })
@@ -37,7 +38,7 @@ export default function ImpactPage() {
     <>
       <PageHeader
         tag="Our Impact"
-        title="17 years of proof. Not promises."
+        title={`${siteData.stats.yearsActive} years of proof. Not promises.`}
         subtitle="Every number on this page represents a real student, a real family, and a future that almost didn't happen."
       />
 

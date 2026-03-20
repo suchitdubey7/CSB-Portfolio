@@ -9,6 +9,7 @@ import ImpactStats from '@/components/ImpactStats'
 import ProgramCard from '@/components/ProgramCard'
 import StoryCard from '@/components/StoryCard'
 import SectionLabel from '@/components/SectionLabel'
+import siteData from '@/content/site-data.json'
 
 // Dynamic import — chart.js is client-only
 const AllocationDonut = dynamic(() => import('@/components/charts/AllocationDonut'), { ssr: false })
@@ -58,26 +59,15 @@ const programs = [
   },
 ]
 
-const stories = [
-  {
-    name: 'Shivani Mishra',
-    achievement: 'IIT Bombay — Electrical Engineering (Dual Degree)',
-    year: 'Vidya Vritti Scholar',
-    quote:
-      "CSB didn't just pay my fees — they believed in me when the weight of my family's circumstances could have crushed that belief. This scholarship gave me two years to prove myself and a lifetime of opportunity.",
-    program: 'Vidya Vritti',
-    href: '/stories#shivani',
-  },
-  {
-    name: 'Nitesh Kr Mahato',
-    achievement: '98% Board Marks • Bokaro District Topper • 3rd in Jharkhand',
-    year: 'Scholar 2018–2020',
-    quote:
-      "I came from a family where no one had completed school before me. CSB's scholarship was not just money — it was a message: you belong here. That message carried me through every difficult exam night.",
-    program: 'Vidya Vritti',
-    href: '/stories#nitesh',
-  },
-]
+// Stories driven from site-data.json (editable via /admin)
+const stories = siteData.stories.slice(0, 2).map(s => ({
+  name:        s.name,
+  achievement: s.achievement,
+  year:        s.batch,
+  quote:       s.quote,
+  program:     s.program,
+  href:        `/stories#${s.id}`,
+}))
 
 const whyUs = [
   { icon: Users,       text: '200+ alumni who give back because this scholarship once made a difference to someone like them' },
@@ -104,9 +94,20 @@ export default function HomePage() {
 
         <div className="container-custom relative z-10 pt-24 pb-16 text-center">
           {/* Trust signal */}
+          {/* Announcement banner — controlled from Admin panel */}
+          {siteData.announcement.active && (
+            <Link
+              href={siteData.announcement.link}
+              className="inline-flex items-center gap-2 bg-gold-400/20 backdrop-blur-sm border border-gold-400/40 text-gold-200 text-sm px-4 py-1.5 rounded-full mb-4 hover:bg-gold-400/30 transition-colors"
+            >
+              <Star className="w-3.5 h-3.5 text-gold-400 fill-gold-400 flex-shrink-0" />
+              <span>{siteData.announcement.text}</span>
+              <span className="font-semibold underline">{siteData.announcement.linkText}</span>
+            </Link>
+          )}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm px-4 py-1.5 rounded-full mb-8">
             <Star className="w-4 h-4 text-gold-400 fill-gold-400" />
-            <span>17 years • 36+ lives transformed • 80G accredited</span>
+            <span>{siteData.stats.yearsActive} years • {siteData.stats.scholarsSupported} lives transformed • 80G accredited</span>
           </div>
 
           {/* Headline */}
@@ -140,9 +141,9 @@ export default function HomePage() {
           {/* Quick stats */}
           <div className="mt-16 grid grid-cols-3 gap-4 max-w-lg mx-auto">
             {[
-              { v: '36+', l: 'Scholars' },
-              { v: '18th', l: 'Annual Cycle' },
-              { v: '100%', l: 'People-Funded' },
+              { v: siteData.stats.scholarsSupported, l: 'Scholars' },
+              { v: siteData.stats.currentBatch,      l: 'Annual Cycle' },
+              { v: siteData.stats.successRate,        l: 'People-Funded' },
             ].map((s) => (
               <div key={s.l} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center border border-white/15">
                 <div className="text-2xl font-bold text-gold-400 font-display">{s.v}</div>
