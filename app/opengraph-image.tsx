@@ -124,7 +124,7 @@ export default function OgImage() {
               fontWeight: 400,
               display: 'flex',
             }}>
-              Community-powered scholarships · 80G tax benefit · ₹2,00,000 funds 2 years
+              Community-powered scholarships · 80G tax benefit · Rs. 2,00,000 funds 2 years
             </div>
           </div>
 

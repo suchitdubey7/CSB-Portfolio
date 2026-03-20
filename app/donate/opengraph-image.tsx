@@ -95,7 +95,7 @@ export default function DonateOgImage() {
               marginTop: 4,
               display: 'flex',
             }}>
-              ₹2,00,000 covers fees, uniform &amp; books for a Class XI–XII scholar
+              Rs. 2,00,000 covers fees, uniform &amp; books for a Class XI–XII scholar
             </div>
           </div>
 
