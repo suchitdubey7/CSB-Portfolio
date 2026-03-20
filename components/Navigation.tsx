@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, GraduationCap, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import clsx from 'clsx'
 
 const navLinks = [
@@ -64,9 +64,7 @@ export default function Navigation() {
           className="flex items-center gap-2.5 group"
           aria-label="Chinmaya Smiles Back - Home"
         >
-          <div className="w-9 h-9 bg-gradient-to-br from-navy-700 to-teal-500 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-            <GraduationCap className="w-5 h-5 text-white" />
-          </div>
+          <img src="/csb-logo.svg" alt="CSB Logo" className="w-10 h-10 drop-shadow-sm group-hover:drop-shadow-md transition-all" />
           <div className="leading-tight">
             <span className={clsx(
               'block font-display font-bold text-sm transition-colors',

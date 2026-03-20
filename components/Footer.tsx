@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { GraduationCap, Mail, Facebook, Heart, ArrowRight } from 'lucide-react'
+import { Mail, Facebook, Heart, ArrowRight } from 'lucide-react'
 
 const footerLinks = {
   Programs: [
@@ -55,9 +55,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5 group mb-5">
-              <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
-                <GraduationCap className="w-6 h-6 text-gold-400" />
-              </div>
+              <img src="/csb-logo.svg" alt="CSB Logo" className="w-11 h-11" />
               <div>
                 <span className="block font-display font-bold text-white">
                   Chinmaya Smiles Back
